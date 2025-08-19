@@ -38,40 +38,34 @@
 </main>
 
 <footer class="max-w-6xl mx-auto px-4 py-10 border-t text-sm text-zinc-500">
-  © 2025
+  © 2025 TOZZY Yakumo Tatsu
 </footer>
 
 <script>
 // ====== 作品データ（ここを書き換えるだけでOK） ==================================
 const WORKS = [
   {
-    slug: "wagahai",                         // 読むページの識別子（reader.html?work=wagahai など）
-    title: "吾輩は猫である",
-    author: "夏目漱石",
-    summary: "猫の視点から人間社会を描いた風刺的長編。",
+    slug: "joshou",                         // 読むページの識別子（reader.html?work=wagahai など）
+    title: "序章 Prologue",
+    summary: "Exiled from the land of the gods, Susano'o, the god of storms, begins his journey on Earth.",
     cover: "https://picsum.photos/seed/cat/600/800", // 画像URL（なければ空に）
-    tags: ["古典","ユーモア"],
     updated: "2025-08-15",
     chapters: 10
   },
   {
-    slug: "kokoro",
-    title: "こころ",
-    author: "夏目漱石",
-    summary: "「私」「先生」「遺書」の三部構成で人間の内面を描く。",
-    cover: "https://picsum.photos/seed/heart/600/800",
-    tags: ["古典","心理"],
-    updated: "2025-07-30",
+    slug: "zombibyo",
+    title: "ゾンビ病 Zombi Disease",
+    summary: "Susano'o visits a village and enjoys a feast with the villagers. However, the next morning he sees the villagers walking like zombies.",
+    cover: "",
+    updated: "2025-08-16",
     chapters: 15
   },
   {
-    slug: "original-001",
-    title: "雨の街灯",
-    author: "Riku",
-    summary: "雨に濡れた街角で交錯する三人の視線の物語。",
+    slug: "isogashi",
+    title: "忙しがり屋 Business of Busyness",
+    summary: "Upon visiting the weaving hut, Ina gets caught up in a workshop mishap.",
     cover: "",
-    tags: ["現代","短編"],
-    updated: "2025-06-12",
+    updated: "2025-08-17",
     chapters: 5
   }
 ];
@@ -130,7 +124,7 @@ function render(){
       </div>
       <div class="mt-2">
         <a class="inline-block border rounded px-3 py-1 hover:bg-zinc-50 text-sm"
-           href="reader.html?work=${encodeURIComponent(w.slug)}">読む</a>
+           href="reader.html?work=${encodeURIComponent(w.slug)}">読む READ</a>
       </div>
     </article>
   `).join('');
