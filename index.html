@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>小説閲覧ページ – 漢字ポップアップ</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: #fafaf9;
+      color: #111827;
+      font-family: "YuMincho", "Hiragino Mincho ProN", serif;
+    }
+    #novel {
+      line-height: 1.8;
+      font-size: 18px;
+      white-space: pre-wrap;
+    }
+    .vertical {
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+    }
+    .word:hover {
+      background: #fde68a;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body class="antialiased">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-20 bg-white/90 backdrop-blur border-b">
+    <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div>
+        <h1 class="text-xl font-bold">吾輩は猫である</h1>
+        <p class="text-sm text-zinc-600">夏目漱石 ・ 初出 1905年</p>
+      </div>
+      <div class="flex gap-2 text-sm">
+        <button onclick="toggleVertical()" class="border px-3 py-1 rounded">縦書き / 横書き</button>
+        <button onclick="incFont()" class="border px-3 py-1 rounded">文字＋</button>
+        <button onclick="decFont()" class="border px-3 py-1 rounded">文字－</button>
+      </div>
+    </div>
+    <!-- ここに読みと意味を表示 -->
+    <div id="popup" class="max-w-4xl mx-auto px-4 py-2 text-lg text-indigo-700 font-medium">
+      （カーソルを漢字に合わせてください）
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="max-w-4xl mx-auto px-4 py-8">
+    <article id="novel">
+      <span class="word" data-yomi="わがはい" data-meaning="I (old-fashioned)">吾輩</span>は
+      <span class="word" data-yomi="ねこ" data-meaning="cat">猫</span>である。
+      名前はまだ無い。<br>
+      どこで
+      <span class="word" data-yomi="うま" data-meaning="to be born">生</span>まれたかとんと見当がつかぬ。
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="max-w-4xl mx-auto px-4 py-6 border-t text-sm text-zinc-500">
+    © 2025 Novel Showcase – Inspired by Soseki Project
+  </footer>
+
+  <script>
+    const novel = document.getElementById("novel");
+    const popup = document.getElementById("popup");
+
+    function toggleVertical() {
+      novel.classList.toggle("vertical");
+    }
+    function incFont() {
+      const size = parseInt(window.getComputedStyle(novel).fontSize);
+      novel.style.fontSize = (size + 2) + "px";
+    }
+    function decFont() {
+      const size = parseInt(window.getComputedStyle(novel).fontSize);
+      novel.style.fontSize = (size - 2) + "px";
+    }
+
+    // --- Hoverで読みと意味を表示 ---
+    document.querySelectorAll(".word").forEach(el=>{
+      el.addEventListener("mouseover", ()=>{
+        popup.textContent = el.textContent + " 【" + el.dataset.yomi + "】 " + el.dataset.meaning;
+      });
+      el.addEventListener("mouseout", ()=>{
+        popup.textContent = "（カーソルを漢字に合わせてください）";
+      });
+    });
+  </script>
+</body>
+</html>
