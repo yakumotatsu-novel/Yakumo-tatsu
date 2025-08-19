@@ -18,16 +18,12 @@
 
 <header class="sticky top-0 bg-white/80 backdrop-blur border-b">
   <div class="max-w-6xl mx-auto px-4 h-16 flex items-center gap-3">
-    <h1 class="font-bold text-lg">小説サイト</h1>
+    <h1 class="font-bold text-lg">八雲立つ Beneath the Rising Clouds</h1>
     <div class="ml-auto flex gap-2">
-      <input id="q" class="border rounded px-3 py-1.5 w-56" placeholder="作品名・作者・紹介で検索">
-      <select id="tag" class="border rounded px-3 py-1.5">
-        <option value="">すべてのタグ</option>
-      </select>
+      <input id="q" class="border rounded px-3 py-1.5 w-56" placeholder="Search for title">
       <select id="sort" class="border rounded px-3 py-1.5">
-        <option value="updated_desc">更新が新しい順</option>
-        <option value="title_asc">タイトル順</option>
-        <option value="author_asc">作者順</option>
+        <option value="updated_desc">New Updates</option>
+        <option value="title_asc">Titles</option>
       </select>
     </div>
   </div>
@@ -115,7 +111,7 @@ function render(){
           </h3>
           <div class="text-sm text-zinc-600">${w.author}</div>
         </div>
-        <div class="text-xs text-zinc-500 whitespace-nowrap">更新: ${w.updated}</div>
+        <div class="text-xs text-zinc-500 whitespace-nowrap">Date: ${w.updated}</div>
       </div>
       <p class="text-sm text-zinc-700 line-clamp-2">${w.summary}</p>
       <div class="flex flex-wrap gap-2">
