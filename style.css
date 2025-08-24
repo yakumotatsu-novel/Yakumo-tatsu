@@ -1,0 +1,59 @@
+/* =====================
+   共通スタイル
+   ===================== */
+
+/* 全体のベース */
+body {
+  font-family: "Hiragino Sans", "Noto Sans JP", sans-serif;
+  font-size: 16px;
+  line-height: 1.9;
+  color: #333;
+  background: #fafafa;
+  margin: 0;
+  padding: 0;
+}
+
+/* 記事全体のボックス */
+.blog-post {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* 見出しデザイン */
+.blog-post h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 10px;
+}
+.blog-post h2 {
+  font-size: 22px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  border-left: 4px solid #4caf50;
+  padding-left: 8px;
+}
+
+/* 本文段落 */
+.blog-post p {
+  margin-bottom: 16px;
+}
+
+/* UIエリア */
+.controls {
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #f0f0f0;
+  border-radius: 8px;
+}
+.controls label {
+  margin-right: 10px;
+}
+.controls select {
+  margin-right: 20px;
+  padding: 4px 8px;
+}
