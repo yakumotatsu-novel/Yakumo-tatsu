@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>作品タイトル – リーダー</title>
+<link rel="icon" href="data:,">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root { --fz: 18px; --lh: 1.9; }
+  body{background:#fafaf9;color:#111827}
+  [data-theme="dark"] body{background:#0b0b0b;color:#e5e7eb}
+  #page{font-size:var(--fz); line-height:var(--lh); white-space:pre-wrap}
+  .vertical{ writing-mode: vertical-rl; text-orientation: upright; }
+  .word:hover{ background: #fde68a; cursor: pointer; }
+  .card{border:1px solid #e5e7eb;border-radius:1rem;background:#fff}
+  [data-theme="dark"] .card{background:#111214;border-color:#222}
+</style>
+</head>
+<body class="antialiased">
+<header class="sticky top-0 z-20 bg-white/80 backdrop-blur border-b [data-theme=dark]:bg-black/60">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="h-14 flex items-center justify-between">
+      <a href="index.html" class="font-semibold hover:opacity-80">← ホーム</a>
+      <div class="flex gap-2 text-sm">
+        <button id="modeBtn" class="border rounded px-3 py-1">縦/横</button>
+        <button id="incBtn" class="border rounded px-3 py-1">文字＋</button>
+        <button id="decBtn" class="border rounded px-3 py-1">文字－</button>
+        <button id="lhUpBtn" class="border rounded px-3 py-1">行間＋</button>
+        <button id="lhDnBtn" class="border rounded px-3 py-1">行間－</button>
+        <button id="themeBtn" class="border rounded px-3 py-1">ダーク</button>
+      </div>
+    </div>
+    <!-- 語にホバーした時の読み/意味表示（使わないなら空のままでOK） -->
+    <div id="hint" class="h-9 flex items-center text-indigo-700 [data-theme=dark]:text-indigo-300 text-base"></div>
+  </div>
+</header>
+
+<main class="max-w-4xl mx-auto px-4 py-6">
+  <!-- 章ナビ -->
+  <nav class="card p-3 mb-4 text-sm flex flex-wrap gap-2">
+    <a class="border rounded px-2 py-1 hover:bg-zinc-50" href="#ch1">第1章</a>
+    <a class="border rounded px-2 py-1 hover:bg-zinc-50" href="#ch2">第2章</a>
+    <!-- 章が増えたらリンクを増やすだけ -->
+    <button id="continueBtn" class="ml-auto border rounded px-2 py-1">つづきから</button>
+  </nav>
+
+  <!-- 本文 -->
+  <article id="page" class="card p-5">
+    <h1 class="text-xl font-bold mb-4">作品タイトル</h1>
+
+    <section id="ch1" data-title="第1章">
+吾輩は<span class="word" data-yomi="ねこ" data-meaning="cat">猫</span>である。名前はまだ無い。
+どこで生まれたかとんと見当がつかぬ。何でも薄暗いじめじめした所でニャーニャー泣いていた事だけは記憶している。
+    </section>
+
+    <hr class="my-6 border-zinc-200">
+
+    <section id="ch2" data-title="第2章">
+やがて吾輩はここで初めて人間というものを見た。しかも後で聞くとそれは書生という人間中で一番獰悪な種族であったそうだ。
+    </section>
+
+    <!-- 章を増やす：<section id="ch3" data-title="第3章">本文…</section> を追加 -->
+  </article>
+</main>
+
+<footer class="max-w-4xl mx-auto px-4 py-8 border-t text-sm text-zinc-500">
+  © 2025
+</footer>
+
+<script>
+const page   = document.getElementById('page');
+const hint   = document.getElementById('hint');
+const modeBtn= document.getElementById('modeBtn');
+const incBtn = document.getElementById('incBtn');
+const decBtn = document.getElementById('decBtn');
+const lhUpBtn= document.getElementById('lhUpBtn');
+const lhDnBtn= document.getElementById('lhDnBtn');
+const themeBtn=document.getElementById('themeBtn');
+const continueBtn=document.getElementById('continueBtn');
+
+const KEY = 'reader.pref.v1';
+const POS = 'reader.pos.v1';
+
+// 読書設定の復元
+(function restore(){
+  const pref = JSON.parse(localStorage.getItem(KEY) || '{}');
+  if(pref.vertical) page.classList.add('vertical');
+  if(pref.fz) document.documentElement.style.setProperty('--fz', pref.fz);
+  if(pref.lh) document.documentElement.style.setProperty('--lh', pref.lh);
+  if(pref.theme==='dark') document.documentElement.setAttribute('data-theme','dark');
+})();
+
+// 位置の保存
+window.addEventListener('scroll', () => {
+  // 現在見出しのIDを保存（最も近いsectionを採用）
+  const secs = [...document.querySelectorAll('article section[id]')];
+  let cur = secs[0]?.id || '';
+  let min = Infinity;
+  secs.forEach(s=>{
+    const top = Math.abs(s.getBoundingClientRect().top);
+    if(top < min){ min = top; cur = s.id; }
+  });
+  localStorage.setItem(POS, cur);
+});
+
+// 続きから読む
+continueBtn.addEventListener('click', ()=>{
+  const id = localStorage.getItem(POS);
+  if(id){ location.hash = '#'+id; }
+});
+
+// UI 操作
+modeBtn.onclick = ()=>{
+  page.classList.toggle('vertical');
+  savePref();
+};
+incBtn.onclick = ()=>{ changeFz(2); };
+decBtn.onclick = ()=>{ changeFz(-2); };
+lhUpBtn.onclick= ()=>{ changeLh(0.1); };
+lhDnBtn.onclick= ()=>{ changeLh(-0.1); };
+themeBtn.onclick= ()=>{
+  const cur = document.documentElement.getAttribute('data-theme');
+  document.documentElement.setAttribute('data-theme', cur==='dark' ? 'light':'dark');
+  savePref();
+};
+
+function changeFz(delta){
+  const cur = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--fz')) || 18;
+  const next = Math.max(12, cur + delta);
+  document.documentElement.style.setProperty('--fz', next+'px');
+  savePref();
+}
+function changeLh(delta){
+  const cur = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--lh')) || 1.9;
+  const next = Math.max(1.2, Math.min(2.6, cur + delta));
+  document.documentElement.style.setProperty('--lh', String(next));
+  savePref();
+}
+function savePref(){
+  const pref = {
+    vertical: page.classList.contains('vertical'),
+    fz: getComputedStyle(document.documentElement).getPropertyValue('--fz').trim(),
+    lh: getComputedStyle(document.documentElement).getPropertyValue('--lh').trim(),
+    theme: document.documentElement.getAttribute('data-theme') || 'light'
+  };
+  localStorage.setItem(KEY, JSON.stringify(pref));
+}
+
+// 語にホバーしたときのヒント表示（使わないなら .word を付けないだけでOK）
+document.querySelectorAll('.word').forEach(el=>{
+  el.addEventListener('mouseover', ()=>{
+    const y = el.dataset.yomi ? `【${el.dataset.yomi}】` : '';
+    const m = el.dataset.meaning ? ` ${el.dataset.meaning}` : '';
+    hint.textContent = el.textContent + ' ' + y + m;
+  });
+  el.addEventListener('mouseout', ()=> hint.textContent = '');
+});
+</script>
+</body>
+</html>

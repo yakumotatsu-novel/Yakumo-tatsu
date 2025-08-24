@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>須佐之男の物語</title>
+  <style>
+    body {
+      font-family: "Yu Gothic", sans-serif;
+      line-height: 1.9;
+      padding: 20px;
+    }
+    .container {
+      display: flex;
+      gap: 40px;
+    }
+    .jp, .en {
+      width: 50%;
+    }
+    .tooltip {
+      position: relative;
+      cursor: pointer;
+      border-bottom: 1px dashed #999;
+    }
+    .tooltip::after {
+      content: attr(data-furigana) " (" attr(data-english) ")";
+      position: absolute;
+      bottom: 120%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 5px;
+      white-space: nowrap;
+      font-size: 0.8rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .tooltip:hover::after {
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<div id="novel">
+  <p>
+    ここは<span class="tooltip" data-furigana="かみ" data-english="god">神</span>の
+    <span class="tooltip" data-furigana="くに" data-english="land">国</span>、
+    <span class="tooltip" data-furigana="たかまのはら" data-english="Takamanohara">高天原</span>。<br>
+    <span class="en">This is the land of the gods, Takamanohara.</span>
+  </p>
+
+  <p>
+    ある<span class="tooltip" data-furigana="かみ" data-english="god">神</span>は
+    <span class="tooltip" data-furigana="もり" data-english="forest">森</span>のざわめきをつくり、
+    ある<span class="tooltip" data-furigana="かみ" data-english="god">神</span>は
+    <span class="tooltip" data-furigana="かわ" data-english="river">川</span>の<span class="tooltip" data-furigana="ながれ" data-english="flow">流れ</span>をつくり、<br>
+    <span class="en">One god created the murmuring of the forest, another created the flow of the river.</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="かみがみ" data-english="gods">神々</span>は
+    <span class="tooltip" data-furigana="しずか" data-english="quietly">静か</span>に
+    <span class="tooltip" data-furigana="つつましく" data-english="modestly">慎ましく</span><span class="tooltip" data-furigana="くらす" data-english="spend (life)">暮らして</span>いた。<br>
+    <span class="en">The gods lived quietly and modestly.</span>
+  </p>
+
+  <p>
+    その<span class="tooltip" data-furigana="なか" data-english="in, inside">中</span>に<span class="tooltip" data-furigana="ひとり" data-english="one person, alone">一人</span>、<span class="tooltip" data-furigana="て" data-english="hand">手</span>のつけられない
+    <span class="tooltip" data-furigana="らんぼうもの" data-english="ruffian">乱暴者</span>がいた。<br>
+    <span class="en">Among them was one uncontrollable ruffian.</span>
+  </p>
+
+  <p>
+    その<span class="tooltip" data-furigana="なまえ" data-english="name">名前</span>は<span class="tooltip" data-furigana="ぼうふう" data-english="storm">暴風</span>の
+    <span class="tooltip" data-furigana="かみ" data-english="god">神</span>
+    「<span class="tooltip" data-furigana="すさのお" data-english="Susano'o">須佐之男</span>」。<br>
+    <span class="en">His name was 'Susano'o', the god of storms.</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="こども" data-english="childhood">子供</span>の<span class="tooltip" data-furigana="ころ" data-english="when">頃</span>から
+    <span class="tooltip" data-furigana="あばれんぼう" data-english="punk">暴れん坊</span>で、
+    <span class="tooltip" data-furigana="だれにも" data-english="anyone">誰にも</span><span class="tooltip" data-furigana="とめる" data-english="stop">止められなかった</span>。<br>
+    <span class="en">Since childhood he had been a wild troublemaker, unstoppable by anyone.</span>
+  </p>
+
+  <p>
+    そんな<span class="tooltip" data-furigana="かれ" data-english="he">彼</span>は<span class="tooltip" data-furigana="ゆるす" data-english="forgive">許されない</span>
+    <span class="tooltip" data-furigana="じゅうざい" data-english="grave crime">重罪</span>を<span class="tooltip" data-furigana="おかす" data-english="commit (crime)">犯してしまった</span>。<br>
+    <span class="en">One day he committed an unforgivable crime.</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="はたけ" data-english="field">畑</span>を<span class="tooltip" data-furigana="あらす" data-english="ravage">荒らし</span>、
+    <span class="tooltip" data-furigana="しんでん" data-english="shrine">神殿</span>を<span class="tooltip" data-furigana="けがす" data-english="dirty">汚し</span>、
+    <span class="tooltip" data-furigana="しんせい" data-english="sacred">神聖</span>な
+    <span class="tooltip" data-furigana="はたおりめ" data-english="weaving maiden">機織り女</span>を<span class="tooltip" data-furigana="ころす" data-english="kill">殺した</span>。<br>
+    <span class="en">He ravaged the fields, defiled the shrine, and killed the sacred weaving maiden.</span>
+  </p>
+
+  <p>
+    あまりの<span class="tooltip" data-furigana="あくぎょう" data-english="evil deeds">悪行</span>に
+    <span class="tooltip" data-furigana="かみがみ" data-english="gods">神々</span>は<span class="tooltip" data-furigana="おこる" data-english="get angry">怒った</span>。<br>
+    <span class="en">The gods grew furious at his misdeeds.</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="すさのお" data-english="Susano'o">須佐之男</span>を<span class="tooltip" data-furigana="よびだす" data-english="summon">呼び出し</span>、
+    <span class="tooltip" data-furigana="じんもん" data-english="interrogation">尋問</span>を<span class="tooltip" data-furigana="おこなう" data-english="conduct">行った</span>。<br>
+    <span class="en">They summoned Susano'o and put him on trial.</span>
+  </p>
+
+  <p>
+    しかしそれは<span class="tooltip" data-furigana="じんもん" data-english="interrogation">尋問</span>というより
+    <span class="tooltip" data-furigana="ごうもん" data-english="torture">拷問</span>のようなものだった。<br>
+    <span class="en">But it was less a trial than a torture.</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="かれ" data-english="he">彼</span>がどう<span class="tooltip" data-furigana="べんめい" data-english="defend himself">弁明</span>しても、
+    どう<span class="tooltip" data-furigana="ゆるし" data-english="forgiveness">許し</span>を<span class="tooltip" data-furigana="ねがう" data-english="beg">願って</span>も、<span class="tooltip" data-furigana="かれ" data-english="him">彼</span>の<span class="tooltip" data-furigana="ことば" data-english="word">言葉</span>は<span class="tooltip" data-furigana="受け入れる" data-english="accept">受け入れられなかった</span>。<br>
+    <span class="en">No matter how he defended himself, no matter how he begged for mercy, his words were rejected.</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="かれ" data-english="he">彼</span>は<span class="tooltip" data-furigana="てあし" data-english="hands and feet">手足</span>の<span class="tooltip" data-furigana="つめ" data-english="nail">爪</span>を<span class="tooltip" data-furigana="ひきぬく" data-english="pull out">引き抜かれ</span>、
+    <span class="tooltip" data-furigana="ちじょう" data-english="earth">地上</span>に<span class="tooltip" data-furigana="ついほうする" data-english="exile">追放されて</span>しまった。<br>
+    <span class="en">His nails were torn from his hands and feet, and he was cast down to the earth.</span>
+  </p>
+
+  <br>
+
+  <p>
+    <span class="tooltip" data-furigana="すさのお" data-english="Susano'o">須佐之男</span>は
+    <span class="tooltip" data-furigana="ぜつぼう" data-english="despair">絶望</span>した。<br>
+    <span class="en">Susano'o despaired.</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="よ" data-english="world">世</span>の
+    <span class="tooltip" data-furigana="りふじんさ" data-english="injustice">理不尽さ</span>と
+    <span class="tooltip" data-furigana="じぶん" data-english="himself">自分</span>の
+    <span class="tooltip" data-furigana="おろかさ" data-english="foolishness">愚かさ</span>に
+    <span class="tooltip" data-furigana="うちひしがれる" data-english="overwhelmed">打ちひしがれた</span>。<br>
+    <span class="en">Crushed by the injustice of the world and his own folly,</span>
+  </p>
+
+  <p>
+    その<span class="tooltip" data-furigana="いきどおり" data-english="rage">憤り</span>が
+    <span class="tooltip" data-furigana="ちょうてん" data-english="peak">頂点</span>に
+    <span class="tooltip" data-furigana="たっする" data-english="reach">達した</span><span class="tooltip" data-furigana="しゅんかん" data-english="moment">瞬間</span>、
+    <span class="tooltip" data-furigana="じぶん" data-english="himself">自分</span>でも<span class="tooltip" data-furigana="おさえる" data-english="hold back">抑えきれない</span>
+    <span class="tooltip" data-furigana="しょうどうてき" data-english="impulsive">衝動的</span>な
+    <span class="tooltip" data-furigana="いかり" data-english="anger">怒り</span>に
+    <span class="tooltip" data-furigana="おそわれる" data-english="seized">襲われた</span>。<br>
+    <span class="en">At the peak of his rage he was seized by an uncontrollable fury.</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="そら" data-english="sky">空</span>は
+    <span class="tooltip" data-furigana="あまぐも" data-english="rainclouds">雨雲</span>に
+    <span class="tooltip" data-furigana="おお" data-english="cover">覆</span>われて
+    <span class="tooltip" data-furigana="まっくら" data-english="dark">真っ暗</span>になった。<br>
+    <span class="en">The sky darkened as rainclouds spread.</span>
+  </p>
+
+  <p>
+    彼が
+    <span class="tooltip" data-furigana="あし" data-english="foot">足</span>を
+    <span class="tooltip" data-furigana="じめん" data-english="ground">地面</span>に強く
+    <span class="tooltip" data-furigana="ふ" data-english="stomp">踏</span>みつけると、
+    <span class="tooltip" data-furigana="だいち" data-english="earth">大地</span>は
+    <span class="tooltip" data-furigana="わ" data-english="split">割</span>れて、
+    <span class="tooltip" data-furigana="あたり" data-english="surroundings">辺</span>りは大きく
+    <span class="tooltip" data-furigana="ゆ" data-english="shake">揺</span>れた。<br>
+    <span class="en">When he stomped his feet upon the ground, the earth split and trembled.</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="かれ" data-english="he">彼</span>が<span class="tooltip" data-furigana="てん" data-english="heaven">天</span>に<span class="tooltip" data-furigana="むかって" data-english="toward">向かって</span><span class="tooltip" data-furigana="おおきい" data-english="big">大きく</span>
+    <span class="tooltip" data-furigana="さけぶ" data-english="shout">叫ぶ</span>と<br>
+    <span class="en">When he shouted to the heavens,</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="あらし" data-english="storm">嵐</span>が<span class="tooltip" data-furigana="まきおこる" data-english="arise">巻き起こり</span>、
+    <span class="tooltip" data-furigana="らいめい" data-english="thunder">雷鳴</span>が
+    <span class="tooltip" data-furigana="なりひびく" data-english="resound">鳴り響いた</span>。<br>
+    <span class="en">A storm arose and thunder echoed.</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="あたり" data-english="surroundings">辺り</span><span class="tooltip" data-furigana="すべて" data-english="all">全て</span>を<span class="tooltip" data-furigana="こわす" data-english="destroy">壊す</span>まで、
+    <span class="tooltip" data-furigana="かれ" data-english="he">彼</span>の<span class="tooltip" data-furigana="いかり" data-english="anger">怒り</span>は<span class="tooltip" data-furigana="おさまる" data-english="calm down">収まらなかった</span>。<br>
+    <span class="en">His anger did not subside until all around him was destroyed.</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="れいせいさ" data-english="calmness">冷静さ</span>を<span class="tooltip" data-furigana="とりもどす" data-english="recover">取り戻した</span>あと、
+    <span class="tooltip" data-furigana="すさのお" data-english="Susano'o">須佐之男</span>は...<span class="tooltip" data-furigana="なく" data-english="cry">泣いた</span>。<br>
+    <span class="en">When calm returned, Susano'o wept.</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="かぜ" data-english="wind">風</span>が<span class="tooltip" data-furigana="おおきな" data-english="big">大きな</span><span class="tooltip" data-furigana="おとをたてる" data-english="make a sound">音を立てて</span>
+    <span class="tooltip" data-furigana="うなる" data-english="howl">唸る</span>ような<span class="tooltip" data-furigana="こえ" data-english="voice">声</span>で<span class="tooltip" data-furigana="なきわめく" data-english="wail">泣き喚いた</span>。<br>
+    <span class="en">He wailed with a voice like the roaring wind.</span>
+  </p>
+
+   <p>
+    <span class="tooltip" data-furigana="じぶん" data-english="himself">自分</span>の<span class="tooltip" data-furigana="おろかな" data-english="foolish">愚かな</span><span class="tooltip" data-furigana="こうい" data-english="act">行為</span>からか<br>
+    <span class="en">Was it from his foolish deeds,</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="やりば" data-english="place to go">やり場</span>のない
+    <span class="tooltip" data-furigana="かなしみ" data-english="sorrow">悲しみ</span>からか<br>
+    <span class="en">or from grief with no place to go?</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="かれ" data-english="he">彼</span>が<span class="tooltip" data-furigana="ながす" data-english="pour">流した</span><span class="tooltip" data-furigana="なみだ" data-english="tears">涙</span>は
+    <span class="tooltip" data-furigana="おおあめ" data-english="heavy rain">大雨</span>となって<span class="tooltip" data-furigana="はげしく" data-english="extremely">激しく</span>
+    <span class="tooltip" data-furigana="だいち" data-english="earth">大地</span>に
+    <span class="tooltip" data-furigana="ふりそそぐ" data-english="(rain) pour">降り注いだ</span>。<br>
+    <span class="en">His tears fell as a torrential rain upon the land.</span>
+  </p>
+
+  <br>
+
+   <p>
+    この<span class="tooltip" data-furigana="はかいしょうどう" data-english="destructive impulse">破壊衝動</span>は
+    <span class="tooltip" data-furigana="いまに" data-english="now">今に</span><span class="tooltip" data-furigana="はじまる" data-english="begin">始まった</span>ことではない。<br>
+    <span class="en">This destructive impulse was nothing new.</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="かれ" data-english="he">彼</span>が<span class="tooltip" data-furigana="たかまのはら" data-english="Takamanohara">高天原</span>で<span class="tooltip" data-furigana="あばれる" data-english="rage">暴れて</span>、
+    <span class="tooltip" data-furigana="ついほう" data-english="exile">追放</span>される<span class="tooltip" data-furigana="げんいん" data-english="cause">原因</span>を<span class="tooltip" data-furigana="つくる" data-english="make">作った</span>のもこの<span class="tooltip" data-furigana="しょうどう" data-english="impulse">衝動</span>だ。<br>
+    <span class="en">It was the same impulse that had led him to run wild in Takamanohara and be exiled.</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="いかり" data-english="anger">怒り</span>が<span class="tooltip" data-furigana="ちょうてん" data-english="peak">頂点</span>に<span class="tooltip" data-furigana="たっする" data-english="reach">達する</span>と、<span class="tooltip" data-furigana="だれか" data-english="somebody">誰か</span>に
+    <span class="tooltip" data-furigana="あやつる" data-english="control">操られて</span>いるかのように<span class="tooltip" data-furigana="あばれまわる" data-english="rampage">暴れ回った</span>。<br>
+    <span class="en">When his rage reached its peak, he rampaged as if possessed,</span>
+  </p>
+
+  <p>
+    そして<span class="tooltip" data-furigana="きがすむ" data-english="be satisfied">気が済む</span>まで<span class="tooltip" data-furigana="あばれまわる" data-english="rampage">暴れ回った</span>ら、
+    <span class="tooltip" data-furigana="あやつりにんぎょう" data-english="puppet">操り人形</span>の<span class="tooltip" data-furigana="いと" data-english="string">糸</span>が
+    プツリと<span class="tooltip" data-furigana="きれる" data-english="be cut">切れた</span>ように、<span class="tooltip" data-furigana="からだ" data-english="body">体</span>の<span class="tooltip" data-furigana="ちから" data-english="power">力</span>が<span class="tooltip" data-furigana="ぬける" data-english="lose (strength)">抜けて</span><span class="tooltip" data-furigana="すべて" data-english="all">全て</span>が<span class="tooltip" data-furigana="むなしい" data-english="lifeless">虚しく</span>なる。<br>
+    <span class="en">and when his fury was spent, he collapsed, powerless, like a puppet whose strings had been cut.</span>
+  </p>
+
+  <p>
+    この<span class="tooltip" data-furigana="のろう" data-english="curse">呪われた</span>
+    <span class="tooltip" data-furigana="じんせい" data-english="life">人生</span>のために、
+    <span class="tooltip" data-furigana="かれ" data-english="he">彼</span>は<span class="tooltip" data-furigana="うまれる" data-english="be born">生まれた</span>ことを
+    <span class="tooltip" data-furigana="くやむ" data-english="regret">悔んだ</span>。<br>
+    <span class="en">He regretted being born into this cursed life.</span>
+  </p>
+
+  <p>
+    だがそのたびに<span class="tooltip" data-furigana="かれ" data-english="his">彼</span>の
+    <span class="tooltip" data-furigana="こころ" data-english="heart">心</span>を<span class="tooltip" data-furigana="ささえる" data-english="support">支えて</span>くれたのは、
+    <span class="tooltip" data-furigana="なくなる" data-english="pass away">亡くなった</span>
+    <span class="tooltip" data-furigana="はは" data-english="mother">母</span>の<span class="tooltip" data-furigana="あたたかい" data-english="warm">暖かい</span><span class="tooltip" data-furigana="ことば" data-english="word">言葉</span>だった。<br>
+    <span class="en">Yet each time, he was sustained by the warm words of his departed mother.</span>
+  </p>
+
+  <br>
+
+  <p>
+    「…<span class="tooltip" data-furigana="かあさん" data-english="mother">母さん</span>のところに<span class="tooltip" data-furigana="いこう" data-english="go">行こう</span>」<br>
+    <span class="en">"...I will go to my mother."</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="みっかかん" data-english="three days">三日間</span><span class="tooltip" data-furigana="なく" data-english="cry">泣き</span><span class="tooltip" data-furigana="つづける" data-english="continue">続けて</span>、
+    <span class="tooltip" data-furigana="かれ" data-english="he">彼</span>はそう<span class="tooltip" data-furigana="けっしん" data-english="resolve">決心</span>した。<br>
+    <span class="en">After weeping for three days, he resolved to do so.</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="ししゃ" data-english="souls of the dead">死者</span>の
+    <span class="tooltip" data-furigana="たましい" data-english="souls">魂</span>は<span class="tooltip" data-furigana="ながい" data-english="long">長い</span>
+    <span class="tooltip" data-furigana="はたけ" data-english="field">旅</span>をして
+    <span class="tooltip" data-furigana="よみのくに" data-english="the land of Yomi">黄泉の国</span>へ<span class="tooltip" data-furigana="いく" data-english="go">行く</span>という。<br>
+    <span class="en">The souls of the dead, it was said, journeyed long to the land of Yomi.</span>
+  </p>
+
+  <p>
+    <span class="tooltip" data-furigana="すさのお" data-english="Susano'o">須佐之男</span>は
+    <span class="tooltip" data-furigana="はは" data-english="mother">母</span>の
+    <span class="tooltip" data-furigana="かげ" data-english="shadow">影</span>を<span class="tooltip" data-furigana="もとめる" data-english="seek">求めて</span>
+    <span class="tooltip" data-furigana="よみのくに" data-english="the land of Yomi">黄泉の国</span>に<span class="tooltip" data-furigana="むかう" data-english="head">向かう</span>ことにしたのだった。<br>
+    <span class="en">And so Susano'o set out for Yomi, seeking his mother’s shadow.</span>
+  </p>
+</div>
+
+<!-- フローティングボタン -->
+<button id="toggleEN">EN ON (SPACE)</button>
+
+<style>
+  /* ツールチップ */
+  .tooltip {
+    position: relative;
+    cursor: pointer;
+    border-bottom: 1px dashed #999;
+  }
+  .tooltip::after {
+    content: attr(data-furigana) "：" attr(data-english);
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    white-space: nowrap;
+    font-size: 0.9rem;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+  }
+  .tooltip:hover::after {
+    opacity: 1;
+  }
+
+  /* 英訳のスタイル */
+  .en {
+    display: block;        /* 行として確保 */
+    min-height: 1.2em;     /* 高さを固定化 */
+    visibility: visible;   /* デフォルト表示 */
+    color: #444;
+    margin: 2px 0 8px;
+  }
+
+  /* フローティングボタン */
+  #toggleEN {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 180px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0078d7;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 2000;
+    text-align: center;
+  }
+  #toggleEN:hover {
+    background: #005a9e;
+  }
+</style>
+
+<script>
+  const enParts = document.querySelectorAll('.en');
+  const toggleBtn = document.getElementById('toggleEN');
+
+  function toggleEnglish() {
+    const hidden = enParts[0].style.visibility === 'hidden';
+    enParts.forEach(el => {
+      el.style.visibility = hidden ? 'visible' : 'hidden';
+    });
+    toggleBtn.textContent = hidden ? 'EN ON (SPACE)' : 'EN OFF (SPACE)';
+  }
+
+  // ボタンで切り替え
+  toggleBtn.addEventListener('click', toggleEnglish);
+
+  // スペースキーで切り替え
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'Space') {
+      e.preventDefault(); // ページスクロール防止
+      toggleEnglish();
+    }
+  });
+</script>
