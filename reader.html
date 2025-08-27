@@ -2,57 +2,76 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>Blog Layout Test</title>
+  <title>作品表示</title>
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
+
 <body>
-  <div class="blog-post">
-    <h1>サンプル記事タイトル</h1>
-
-    <!-- UIエリア -->
-    <div class="controls">
-      <label for="font-size">文字サイズ:</label>
-      <select id="font-size">
-        <option value="14">XS</option>
-        <option value="16" selected>Small</option>
-        <option value="18">Medium</option>
-        <option value="20">Large</option>
-        <option value="24">XL</option>
-      </select>
-
-      <label for="line-height">行間:</label>
-      <select id="line-height">
-        <option value="1.4">Tight</option>
-        <option value="1.6">Cozy</option>
-        <option value="1.9" selected>Normal</option>
-        <option value="2.1">Relaxed</option>
-        <option value="2.3">Loose</option>
-      </select>
-    </div>
-
-    <p>
-      これはテスト用の本文です。GitHub Pages で公開したときに、文字サイズや行間を切り替えて確認できます。
-    </p>
-    <p>
-      スクロールして下に行くと、右下に「トップに戻る」ボタンが出てきます。
-    </p>
+  <!-- ヘッダー -->
+<header id="header">
+  <div class="header-left">
+    <a href="index.html" class="btn home-btn">HOME</a>
   </div>
+  <div class="header-center">
+    <!-- ✅ 復活させる -->
+    <div id="work-title" style="display:none;"></div>
+    <h2 id="chapter-title"></h2>
+    <div id="toc"></div>
+  </div>
+  <div class="header-right">
+    <div class="font-controls">
+      <button id="smallerBtn" class="btn">Small</button>
+      <span id="font-label">Normal</span>
+      <button id="largerBtn" class="btn">Large</button>
+    </div>
+  </div>
+</header>
 
-  <!-- ページトップに戻るボタン -->
-  <button id="top-btn" style="
-    display:none;
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    padding:10px 15px;
-    background:#4caf50;
-    color:white;
-    border:none;
-    border-radius:6px;
-    cursor:pointer;
-  ">
-    ↑ トップ
-  </button>
+<main id="main">
+  <!-- 本文読み込み領域 -->
+  <div id="content">読み込み中...</div>
+</main>
+
+<!-- 英訳ON/OFFボタン -->
+<button id="toggleEN">ENG OFF (SPACE)</button>
+
+<script>
+const WORKS = [
+  {
+    slug: "001_Prologue",
+    title: "序章 Prologue",
+    summary: "Exiled from the land of the gods, Susano'o, the god of storms, begins his journey on Earth.",
+    cover: "https://picsum.photos/seed/cat/600/800",
+    updated: "2025-08-15",
+    chapters: 4
+  },
+  {
+    slug: "002_Zombibyo",
+    title: "ゾンビ病 Zombie Disease",
+    summary: "Susano'o visits a village and enjoys a feast with the villagers. However, the next morning he sees the villagers walking like zombies.",
+    cover: "",
+    updated: "2025-08-16",
+    chapters: 6
+  },
+  {
+    slug: "003_Isogashi",
+    title: "忙しがり屋 Business of Busyness",
+    summary: "Upon visiting the weaving hut, Ina gets caught up in a workshop mishap.",
+    cover: "",
+    updated: "2025-08-17",
+    chapters: 7
+  },
+  {
+    slug: "004_Hikari",
+    title: "明日への光 The Light of Tomorrow",
+    summary: ".",
+    cover: "",
+    updated: "2025-08-27",
+    chapters: 10
+  }
+];
+</script>
+
 </body>
 </html>

@@ -1,56 +1,99 @@
-/* =====================
-   共通スクリプト
-   ===================== */
+// === URLパラメータから本文読み込み ===
+const params = new URLSearchParams(window.location.search);
+const work = params.get("work");
 
-// フォントサイズ切り替え
-function applySize(size) {
-  document.body.style.fontSize = size + "px";
+if (work) {
+  const path = `episodes/${work}.html`;
+  fetch(path)
+    .then(res => {
+      if (!res.ok) throw new Error("HTTPエラー " + res.status);
+      return res.text();
+    })
+    .then(html => {
+      document.getElementById("content").innerHTML = html;
+
+      // ✅ slugからWORKSを探してtitleを表示
+      const workData = WORKS.find(w => w.slug === work);
+      if (workData) {
+        document.getElementById("work-title").textContent = workData.title;
+        document.getElementById("chapter-title").textContent = workData.title;
+      } else {
+        const fallbackTitle = work.replace(/_/g, " ");
+        document.getElementById("work-title").textContent = fallbackTitle;
+        document.getElementById("chapter-title").textContent = fallbackTitle;
+      }
+
+      // ✅ 段落ジャンプボタン生成処理
+      const contentDiv = document.getElementById("content");
+      const tocDiv = document.getElementById("toc");
+      tocDiv.innerHTML = ""; // 初期化
+
+      const sections = contentDiv.querySelectorAll("section");
+      sections.forEach((sec, i) => {
+        sec.id = `p${i+1}`;
+        const btn = document.createElement("button");
+        btn.textContent = `段落 ${i+1}`;
+        btn.addEventListener("click", () => {
+          const headerHeight = document.getElementById("header").offsetHeight || 100;
+          const top = sec.getBoundingClientRect().top + window.scrollY - headerHeight - 10;
+          window.scrollTo({ top, behavior: "smooth" });
+        });
+        tocDiv.appendChild(btn);
+      });
+    })
+    .catch(err => {
+      document.getElementById("content").innerHTML =
+        "本文を読み込めませんでした。<br>" + err.message;
+    });
+} else {
+  document.getElementById("content").innerHTML = "作品が指定されていません。";
 }
 
-// 行間切り替え
-function applyLineHeight(lh) {
-  document.body.style.lineHeight = lh;
+// === 英訳ON/OFF切り替え ===
+function toggleEnglish() {
+  const enParts = document.querySelectorAll('.translation');
+  if (!enParts.length) return;
+
+  const currentlyVisible = !enParts[0].classList.contains('hidden-translation');
+  enParts.forEach(el => {
+    el.classList.toggle('hidden-translation');
+  });
+
+  document.getElementById("toggleEN").textContent =
+    currentlyVisible ? 'ENG ON (SPACE)' : 'ENG OFF (SPACE)';
 }
 
-// ページトップに戻るボタンの表示/非表示
-function handleScroll() {
-  const topBtn = document.querySelector("#top-btn");
-  if (!topBtn) return;
-  if (window.scrollY > 200) {
-    topBtn.style.display = "block";
-  } else {
-    topBtn.style.display = "none";
-  }
-}
+document.getElementById("toggleEN").addEventListener('click', toggleEnglish);
 
-// 初期化処理
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("script.js loaded ✅");
-
-  // サイズ選択
-  const sizeSelect = document.querySelector("#font-size");
-  if (sizeSelect) {
-    sizeSelect.addEventListener("change", (e) => {
-      applySize(e.target.value);
-    });
-  }
-
-  // 行間選択
-  const lhSelect = document.querySelector("#line-height");
-  if (lhSelect) {
-    lhSelect.addEventListener("change", (e) => {
-      applyLineHeight(e.target.value);
-    });
-  }
-
-  // スクロールでトップボタンの挙動制御
-  window.addEventListener("scroll", handleScroll);
-
-  // トップに戻るボタン動作
-  const topBtn = document.querySelector("#top-btn");
-  if (topBtn) {
-    topBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+document.addEventListener('keydown', (e) => {
+  if (e.code === 'Space') {
+    e.preventDefault();
+    toggleEnglish();
   }
 });
+
+// === フォントサイズ ===
+const FONT_SIZES = ["14px", "16px", "18px", "20px", "24px"];
+const FONT_LABELS = ["XS", "Small", "Normal", "Large", "XL"];
+let currentFontIndex = 2; // Normal(18px)から開始
+
+function applyFontSize() {
+  const content = document.getElementById("content");
+  content.style.fontSize = FONT_SIZES[currentFontIndex];
+  document.getElementById("font-label").textContent = FONT_LABELS[currentFontIndex];
+}
+
+document.getElementById("smallerBtn").addEventListener("click", () => {
+  if (currentFontIndex > 0) {
+    currentFontIndex--;
+    applyFontSize();
+  }
+});
+document.getElementById("largerBtn").addEventListener("click", () => {
+  if (currentFontIndex < FONT_SIZES.length - 1) {
+    currentFontIndex++;
+    applyFontSize();
+  }
+});
+
+applyFontSize();
