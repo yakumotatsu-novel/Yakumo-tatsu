@@ -22,8 +22,11 @@
     <div class="ml-auto flex gap-2">
       <input id="q" class="border rounded px-3 py-1.5 w-56" placeholder="Search for title">
       <select id="sort" class="border rounded px-3 py-1.5">
-        <option value="updated_desc">New Updates</option>
+        <option value="updated_asc" selected>Oldest First</option>
+        <option value="updated_desc">Newest First</option>
         <option value="title_asc">Titles</option>
+        <option value="length_desc">Length (long)</option>
+        <option value="length_asc">Length (short)</option>
       </select>
     </div>
   </div>
@@ -41,32 +44,32 @@
 // ====== 作品データ（ここを書き換えるだけでOK） ==================================
 const WORKS = [
   {
-    slug: "001_Prologue",
-    title: "序章 Prologue",
+    slug: "001_Joshou",
+    title: "Prologue 序章",
     summary: "Exiled from the land of the gods, Susano'o, the god of storms, begins his journey on Earth.",
-    cover: "https://picsum.photos/seed/cat/600/800",
+    cover: "images/001_Joshou.png",
     updated: "2025-08-15",
     chapters: 4
   },
   {
     slug: "002_Zombibyo",
-    title: "ゾンビ病 Zombie Disease",
+    title: "Zombie Disease ゾンビ病",
     summary: "Susano'o visits a village and enjoys a feast with the villagers. However, the next morning he sees the villagers walking like zombies.",
-    cover: "",
+    cover: "images/002_Zombibyo.png",
     updated: "2025-08-16",
     chapters: 6
   },
   {
     slug: "003_Isogashi",
-    title: "忙しがり屋 Business of Busyness",
+    title: "Business of Busyness 忙しがり屋",
     summary: "Upon visiting the weaving hut, Ina gets caught up in a workshop mishap.",
-    cover: "",
+    cover: "images/003_Isogashi.png",
     updated: "2025-08-17",
     chapters: 7
   },
   {
     slug: "004_Hikari",
-    title: "明日への光 The Light of Tomorrow",
+    title: "The Light of Tomorrow 明日への光",
     summary: ".",
     cover: "",
     updated: "2025-08-27",
@@ -92,8 +95,17 @@ function render(){
     case 'title_asc':
       list.sort((a,b)=>a.title.localeCompare(b.title,'ja'));
       break;
-    default: // updated_desc
+    case 'updated_desc':
       list.sort((a,b)=> new Date(b.updated) - new Date(a.updated));
+      break;
+    default: // updated_asc
+      list.sort((a,b)=> new Date(a.updated) - new Date(b.updated));
+      break;
+    case 'length_desc':
+      list.sort((a,b)=> (b.chapters || 0) - (a.chapters || 0));
+      break;
+    case 'length_asc':
+      list.sort((a,b)=> (a.chapters || 0) - (b.chapters || 0));
       break;
   }
 
